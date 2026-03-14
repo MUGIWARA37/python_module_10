@@ -39,7 +39,9 @@ if __name__ == "__main__":
         print(f"Combined spell result: {result[0]}, {result[1]}")
 
         def damage(target: str) -> int:
-            return 10
+            if target:
+                return 10
+            return 0
 
         print("\nTesting power amplifier...")
         mega = power_amplifier(damage, 3)
