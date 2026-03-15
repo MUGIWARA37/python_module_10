@@ -1,5 +1,6 @@
 import functools
 import operator
+from typing import Any
 
 
 def spell_reducer(spells: list[int], operation: str) -> int:
@@ -35,19 +36,19 @@ def memoized_fibonacci(n: int) -> int:
 
 def spell_dispatcher() -> callable:
     @functools.singledispatch
-    def cast(spell):
+    def cast(spell: Any) -> str:
         return f"Unknown spell type: {type(spell)}"
 
     @cast.register(int)
-    def _(spell: int):
+    def _(spell: int) -> str:
         return f"Damage spell dealing {spell} points"
 
     @cast.register(str)
-    def _(spell: str):
+    def _(spell: str) -> str:
         return f"Enchantment: {spell}"
 
     @cast.register(list)
-    def _(spell: list):
+    def _(spell: list) -> str:
         return f"Multi-cast: {', '.join(str(s) for s in spell)}"
 
     return cast
