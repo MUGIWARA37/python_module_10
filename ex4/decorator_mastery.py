@@ -44,7 +44,7 @@ def retry_spell(max_attempts: int) -> callable:
 
 
 class MageGuild:
-
+    @staticmethod
     def validate_mage_name(name: str) -> bool:
         return len(name) >= 3 and all(c.isalpha() or c == " " for c in name)
 
